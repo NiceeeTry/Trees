@@ -55,7 +55,14 @@ class Tree:
             if current.right:
                 queue.append(current.right)
             
+    # find node
+    def find_node(self, root, val):
+        if root.data>val and root.left:
+            return self.find_node(root.left, val)
+        if root.data<val and root.right:
+            return self.find_node(root.right, val)
         
+        return root.data == val
 
     def inorder_loop(self, root):
         ans=[]
@@ -93,6 +100,8 @@ tr.postorder_traversal(r)
 print('------')
 print('BFS')
 tr.BFS(r)
+print('find -----')
+print(tr.find_node(r,11))
 # print(r.data, r.left.data, r.right.data)
 # print(r.left.left.data, r.left.right.data)
 # # print(r.right.left.data, r.right.right.data)
